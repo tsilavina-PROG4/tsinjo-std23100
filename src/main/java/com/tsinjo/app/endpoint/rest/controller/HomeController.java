@@ -4,12 +4,16 @@ import com.tsinjo.app.domain.Donation;
 import com.tsinjo.app.domain.Help;
 import com.tsinjo.app.repository.DonationRepository;
 import com.tsinjo.app.repository.HelpRepository;
+
+import lombok.AllArgsConstructor;
+
 import com.tsinjo.app.endpoint.event.EventProducer;
 import com.tsinjo.app.endpoint.event.model.VerifyPaymentRequested;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
@@ -39,11 +43,12 @@ public class HomeController {
 
 	@PostMapping("/donate")
 	public String donate(@ModelAttribute Donation donation) {
+		donation.setDate(java.time.Instant.now());
 		donationRepository.save(donation);
 		// Produire l'événement de vérification paiement si applicable
 		if (donation.getPayment() != null) {
 			VerifyPaymentRequested event = VerifyPaymentRequested.builder()
-					.apiKey(System.getenv("VOLAPI_KEY")) // à adapter selon la source de la clé
+					.apiKey(System.getenv("VOLAPI_KEY"))
 					.pspPaymentId(donation.getPayment().getPspPaymentId())
 					.payerEmail(donation.getPayment().getPayerEmail())
 					.pspType(donation.getPayment().getPspType())
