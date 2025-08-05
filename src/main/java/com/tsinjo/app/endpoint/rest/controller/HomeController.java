@@ -1,6 +1,8 @@
 package com.tsinjo.app.endpoint.rest.controller;
 
+import com.tsinjo.app.domain.Donor;
 import com.tsinjo.app.domain.Donation;
+import com.tsinjo.app.domain.DonationInput;
 import com.tsinjo.app.domain.Help;
 import com.tsinjo.app.repository.DonationRepository;
 import com.tsinjo.app.repository.HelpRepository;
@@ -42,8 +44,17 @@ public class HomeController {
 	}
 
 	@PostMapping("/donate")
-	public String donate(@ModelAttribute Donation donation) {
+	public String donate(@ModelAttribute DonationInput donationInput) {
+		Donation donation = new Donation();
+		donation.setAmount(donationInput.getAmount());
 		donation.setDate(java.time.Instant.now());
+		donation.setId(donationInput.getId());
+		Donor donor = new Donor();
+		donor.setName(donationInput.getDonorName());
+		donor.setEmail(donationInput.getDonorEmail());
+		donor.setId(donationInput.getId());
+		donation.setDonor(donor);
+		// Enregistrer le don
 		donationRepository.save(donation);
 		// Produire l'événement de vérification paiement si applicable
 		if (donation.getPayment() != null) {
