@@ -4,11 +4,11 @@ import com.tsinjo.app.domain.Payment;
 import java.util.List;
 
 public interface PaymentRepository {
-	Payment findById(Long id);
+  Payment findById(Long id);
 
-	List<Payment> findAll();
+  List<Payment> findAll();
 
-	Payment save(Payment payment);
+  Payment save(Payment payment);
 
-	void deleteById(Long id);
+  void deleteById(Long id);
 }

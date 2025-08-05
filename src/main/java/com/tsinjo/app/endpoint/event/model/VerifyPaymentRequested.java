@@ -8,18 +8,18 @@ import lombok.*;
 @Builder(toBuilder = true)
 @Data
 public class VerifyPaymentRequested extends PojaEvent {
-	private String apiKey;
-	private String pspPaymentId;
-	private String payerEmail;
-	private String pspType;
+  private String apiKey;
+  private String pspPaymentId;
+  private String payerEmail;
+  private String pspType;
 
-	@Override
-	public Duration maxConsumerDuration() {
-		return Duration.ofSeconds(45);
-	}
+  @Override
+  public Duration maxConsumerDuration() {
+    return Duration.ofSeconds(45);
+  }
 
-	@Override
-	public Duration maxConsumerBackoffBetweenRetries() {
-		return Duration.ofSeconds(30);
-	}
+  @Override
+  public Duration maxConsumerBackoffBetweenRetries() {
+    return Duration.ofSeconds(30);
+  }
 }

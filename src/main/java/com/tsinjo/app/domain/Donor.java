@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Donor {
-	private Long id;
-	private String name;
-	private String email;
+  private Long id;
+  private String name;
+  private String email;
 }

@@ -4,11 +4,11 @@ import com.tsinjo.app.domain.Beneficiary;
 import java.util.List;
 
 public interface BeneficiaryRepository {
-	Beneficiary findById(Long id);
+  Beneficiary findById(Long id);
 
-	List<Beneficiary> findAll();
+  List<Beneficiary> findAll();
 
-	Beneficiary save(Beneficiary beneficiary);
+  Beneficiary save(Beneficiary beneficiary);
 
-	void deleteById(Long id);
+  void deleteById(Long id);
 }
