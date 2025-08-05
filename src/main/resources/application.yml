@@ -1,8 +1,11 @@
+aws:
+  eventBridge:
+    bus: ${AWS_EVENTBRIDGE_BUS:tsinjo-event-bus}
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/tsinjo
-    username: tsinjo
-    password: tsinjo
+    url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
+    username: postgres.mwyefmdrqvbxwhbglmmv
+    password: Tsinjo*
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
