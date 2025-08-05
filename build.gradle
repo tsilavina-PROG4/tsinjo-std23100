@@ -148,6 +148,7 @@ implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 implementation 'org.postgresql:postgresql:42.7.3'
 implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 implementation 'org.postgresql:postgresql:42.7.3'
+implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
 
 }
